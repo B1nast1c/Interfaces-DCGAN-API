@@ -1,11 +1,11 @@
-const {
-    getLabels
-} = require('../controllers/labels')
+const { getLabels } = require("../controllers/labels");
 
-const routes = [{
-    method: 'GET',
-    url: '/api/labels',
-    handler: getLabels
-}]
+const routes = [
+  {
+    method: "GET",
+    url: "/api/labels",
+    handler: getLabels,
+  },
+];
 
-module.exports = routes
+module.exports = routes;
