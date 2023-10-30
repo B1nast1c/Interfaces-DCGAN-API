@@ -1,19 +1,19 @@
-const getTopics = require("../data/getLabels.js");
-const common = require("../common");
+const getTopics = require('../data/getLabels.js');
+const common = require('../common');
 
 const getLabels = async (req, res) => {
-  labels = getTopics(common.FILE_LOCATION, "topic")
-    .then((data) => {
-      data = [...new Set(data)];
-      json_data = {
-        name: data,
-      };
+  labels = getTopics(common.FILE_LOCATION, 'topic')
+      .then((data) => {
+        data = [...new Set(data)];
+        jsonData = {
+          name: data,
+        };
 
-      return json_data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+        return jsonData;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
 
   return labels;
 };

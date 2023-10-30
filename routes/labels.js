@@ -1,9 +1,9 @@
-const { getLabels } = require("../controllers/labels");
+const {getLabels} = require('../controllers/labels');
 
 const routes = [
   {
-    method: "GET",
-    url: "/api/labels",
+    method: 'GET',
+    url: '/api/labels',
     handler: getLabels,
   },
 ];
