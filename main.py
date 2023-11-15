@@ -73,18 +73,17 @@ async def generate_images(label: request_model.Label):
     Generacion de la imagen
     """
     images = []
-    rand_array = np.random.randint(0, 10, (4, 5))
     for _ in range(CANT):
         img_id = random.randint(1, 999)
         img_date = str(date.strftime("%Y-%m-%d %H:%M:%S"))
-        # image = generate_image(GENERATOR, label)
+        image = generate_image(GENERATOR, label.label)
         img_object = gan_model.Image(
             id=img_id,
             name="Image_" + str(img_id),
             label=label.label,
             resolution="128px x 128px",
             date=img_date,
-            image=rand_array
+            image=image
         )
         images.append(img_object)
     return {
