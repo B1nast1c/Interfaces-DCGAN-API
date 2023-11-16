@@ -6,6 +6,18 @@ from main import app
 client = TestClient(app)
 
 
+def test_main():
+    """
+    Testing de la ruta principal
+    """
+    expected = {
+        "message": "Welcome to the Labels API"
+    }
+    response = client.get('/')
+    assert response.status_code == 200
+    assert response.json() == expected
+
+
 def test_get_labels():
     """
     Testing de la ruta de obtención de labels
@@ -37,7 +49,22 @@ def test_get_labels():
     assert set(response.json()["name"]) == set(expected_list)
 
 
-def test_generate_img():
+def test_right_label():
+    """
+    Testing de la ruta de generación de imágenes
+    NOTA: No lee las imágenes como tal, pero se encarga de validar formatos
+    """
+    response = client.post(
+        "/api/generate",
+        json={"label": "menu"}
+    )
+    json_data = response.json()["data"]
+    assert response.status_code == 200
+    assert len(json_data) == 5
+    assert "label" in json_data[0]
+
+
+def test_bad_label():
     """
     Testing de la ruta de generación de imágenes
     NOTA: No lee las imágenes como tal, pero se encarga de validar formatos
@@ -47,6 +74,8 @@ def test_generate_img():
         json={"label": "customLabel"}
     )
     json_data = response.json()["data"]
+    element = json_data[0]
     assert response.status_code == 200
     assert len(json_data) == 5
-    assert "label" in json_data[0]
+    assert "label" in element
+    assert element["image"] == "[0.]"
