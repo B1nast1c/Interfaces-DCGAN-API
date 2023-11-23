@@ -1,5 +1,4 @@
 """Archivo main"""
-import random
 from datetime import datetime as d
 from contextlib import asynccontextmanager
 from fastapi import FastAPI

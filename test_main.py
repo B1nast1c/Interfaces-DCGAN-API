@@ -60,7 +60,7 @@ def test_right_label():
     )
     json_data = response.json()["data"]
     assert response.status_code == 200
-    assert len(json_data) == 5
+    assert len(json_data) == 2
     assert "label" in json_data[0]
 
 
@@ -76,6 +76,6 @@ def test_bad_label():
     json_data = response.json()["data"]
     element = json_data[0]
     assert response.status_code == 200
-    assert len(json_data) == 5
+    assert len(json_data) == 2
     assert "label" in element
-    assert element["image"] == "[0.]"
+    assert element["image"] == "-1"

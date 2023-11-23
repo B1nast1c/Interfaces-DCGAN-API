@@ -1,6 +1,1 @@
 uvicorn main:app --port 5000 --reload
-
-NOTA PERSONAL:
-Si alcanza el tiempo, recuerda entrenar el modelo de nuevo, para mejor resultados
-Y enlazarlo nuevamente al cargar los pesos y elementos ADICIONALES
-Cambios principales -> Modelo Generativo + Metricas
